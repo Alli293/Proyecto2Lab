@@ -41,7 +41,8 @@ public class ApplicationConfiguration {
 
             private String getMD5(String input) {
                 try {
-                    java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+                    java.security.MessageDigest md =
+                            java.security.MessageDigest.getInstance("MD5");
                     byte[] messageDigest = md.digest(input.getBytes());
                     StringBuilder hexString = new StringBuilder();
                     for (byte b : messageDigest) {
@@ -64,10 +65,10 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public AuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService());
-        authProvider.setPasswordEncoder(passwordEncoder());
+    public AuthenticationProvider authenticationProvider(UserDetailsService userDetailsService,
+                                                         PasswordEncoder passwordEncoder) {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(userDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder);
         return authProvider;
     }
 }
