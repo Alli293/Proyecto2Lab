@@ -60,7 +60,7 @@
               "script": {
                 "exec": [
                   "var response = pm.response.json();\r",
-                  "pm.environment.set(\"token\", response.token);"
+                  "pm.collectionVariables.set(\"token\", response.token);"
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -108,7 +108,7 @@
               "script": {
                 "exec": [
                   "var response = pm.response.json();\r",
-                  "pm.environment.set(\"categoriaId\", response.id);"
+                  "pm.collectionVariables.set(\"categoriaId\", response.id);"
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -253,7 +253,7 @@
               "script": {
                 "exec": [
                   "var response = pm.response.json();\r",
-                  "pm.environment.set(\"productoId\", response.id);"
+                  "pm.collectionVariables.set(\"productoId\", response.id);"
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -386,6 +386,44 @@
           "response": []
         }
       ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "categoriaId",
+      "value": ""
+    },
+    {
+      "key": "productoId",
+      "value": ""
     }
   ]
 }
